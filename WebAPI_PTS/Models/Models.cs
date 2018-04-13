@@ -109,10 +109,13 @@ namespace WebAPI_PTS.Models
         public string TreatmentTypeName { get; set; }
     }
 
-
     public class ResultEntry
     {
-        public int TreatmentProductId { get; set; }
+        public int ResultEntryId { get; set; }
+        public double Value { get; set; }
+
+        public int ResultGroupId { get; set; }
+        public ResultGroup ResultGroup { get; set; }
     }
     public class ResultType
     {
@@ -146,13 +149,53 @@ namespace WebAPI_PTS.Models
         public DateTime EditDate { get; set; }
     }
 
+    public class ResultGroup
+    {
+        public int TrialGroupId { get; set; }
+        public int TreatmentId { get; set; }
+        public int ResultFormatId { get; set; }
+    }
+
+    public class TrialGroupResults
+    {
+        public TrialGroup CommentId { get; set; }
+        public DateTime PostDate { get; set; }
+        public DateTime EditDate { get; set; }
+    }
+
 
     public class TreatmentImage
     {
         public int ImageId { get; set; }
         public byte[] ImageArr { get; set; }
-        public string Caption { get; set; }
+        public string Description { get; set; }
 
         public int TreatmentId { get; set; }
+    }
+
+
+    public class DosageType
+    {
+        public int DosageTypeId { get; set; }
+        public string DosageName { get; set; }
+
+        public List<DosageAmount> Amounts { get; set; }
+    }
+
+    public class DosageAmount
+    {
+        public double DosageAmountId{ get; set; }
+        public double Value { get; set; }
+
+        public int DosageTypeId { get; set; }
+    }
+
+    public class ResultFormat
+    {
+        public int ResultEntryId { get; set; }
+        public double Value { get; set; }
+
+        public int ResultGroupId { get; set; }
+        public ResultGroup ResultGroup { get; set; }
     }
 }
